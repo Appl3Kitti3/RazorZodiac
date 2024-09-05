@@ -20,3 +20,16 @@ html {
 body {
   margin-bottom: 60px;
 }
+
+/* Used GitHub Co-Pilot for this chunk of code. Line (24 - 35) */
+
+/* Hide the spinners in number input fields */
+input[type=number]::-webkit-outer-spin-button,
+input[type=number]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+input[type=number] {
+    -moz-appearance: textfield;
+}

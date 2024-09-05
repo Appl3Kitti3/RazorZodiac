@@ -1,0 +1,40 @@
+﻿@* Shout out to GitHub Co-Pilot for collaborating*@
+@page
+@model RazorZodiac.Pages.UtilsModel
+@{
+    // Assign the business logic data into variables
+    string? chineseZodiac = ViewData["Zodiac"] as string; // type of zodiac
+    string? myMessage = ViewData["Message"] as string; // message to display
+    string? myImage = ViewData["Image"] as string; // name of the image (png)
+    string? myColor = ViewData["Color"] as string; // success or danger
+
+}
+
+<p>Learn about what year is a Zodiac.</p>
+    
+    <form method="post">
+        <div class="form-group">
+            <label asp-for="Year">Enter year:</label>
+            <input asp-for="Year" name="year"/>
+        </div>
+
+
+        
+        <br>
+        <button type="submit" class="btn btn-primary">Get Zodiac</button>
+        <a asp-action="Index">Clear</a>
+    </form>
+
+    @if (myMessage != null) // dont display message if null
+    {
+        <div class="alert alert-@myColor" role="alert">
+            @myMessage <!-- Print message -->
+            @if (chineseZodiac != null) // dont display Zodiac + image if invalid year
+            {
+                <strong>@chineseZodiac</strong>
+                <img src="~/images/@myImage"/>
+                <br>   
+            }
+        </div>
+    }
+    
